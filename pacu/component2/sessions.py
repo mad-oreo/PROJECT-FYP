@@ -48,11 +48,12 @@ def hard_needed(spec: WeekSpec, ctx: PlanContext) -> int:
     weeks keep the capacity's count.
     """
     cfg = ctx.cfg
-    if spec.hard_paused:
+    if spec.hard_paused:  # OWN DESIGN (A-9)
         return 0
+    # OWN DESIGN (A-2, A-18); P4
     if spec.week_type in (HOLD, RECOVERY) or spec.pacu_phase in ("base", "hold"):
         return 0
-    if spec.week_type == RACE_WEEK:
+    if spec.week_type == RACE_WEEK:  # OWN DESIGN (A-3)
         return cfg.RACE_WEEK_HARD_SESSIONS
     return cfg.HARD_SESSIONS_PER_WEEK[ctx.capacity]
 
@@ -205,7 +206,7 @@ def select_workouts(
     alt = alternation_index(spec, ctx, history)
     if ctx.track == "short":
         if spec.pacu_phase == "build":
-            seq = ["Z4_1K_REPS", "Z3_TEMPO"]  # A-16: Conservative starts with Z4 reps
+            seq = ["Z4_1K_REPS", "Z3_TEMPO"]  # OWN DESIGN (A-16): Conservative starts with Z4 reps
             return seq[:n] if n >= 2 else [seq[alt % 2]]
         primary, other = (("Z5_400_REPS", "Z4_2K_REPS") if ctx.distance == "5K"
                           else ("Z4_2K_REPS", "Z5_400_REPS"))
@@ -214,7 +215,7 @@ def select_workouts(
         return [_lt_build_code(spec, ctx, all_specs)] * n  # Hard #2 repeats Hard #1
     if n >= 2:
         return ["LT_T8_REPS", "LT_RACE_PACE"][:n]
-    return [["LT_RACE_PACE", "LT_T8_REPS"][alt % 2]]  # A-16: starts with the race-pace run
+    return [["LT_RACE_PACE", "LT_T8_REPS"][alt % 2]]  # OWN DESIGN (A-16): starts with the race-pace run
 
 
 def _round_half_up(x: float) -> int:
@@ -251,7 +252,7 @@ def make_main_set(code: str, ctx: PlanContext, spec: WeekSpec, budget_km: float,
         return ms("Interval reps", "Z5", p.z5, "m", cfg.ST_PEAK_5K_REP_M, cfg.ST_PEAK_5K_JOG_S, ("A-46",))
     if code == "Z4_2K_REPS":
         return ms("Threshold reps", "Z4", p.z4, "m", cfg.ST_PEAK_10K_REP_M, cfg.ST_PEAK_10K_JOG_S, ("A-46", "A-14"))
-    if code == "ST_RACE_WEEK":
+    if code == "ST_RACE_WEEK":  # OWN DESIGN (A-21, A-22): target reps, then the S4 cap wins
         last = last_build_z4_reps(history)
         reps = cfg.ST_RACE_WEEK_MIN_REPS if last is None else max(cfg.ST_RACE_WEEK_MIN_REPS, _round_half_up(last / 2))
         return ms("Race-week threshold reps", "Z4", p.z4, "m", cfg.ST_RACE_WEEK_REP_M, cfg.ST_RACE_WEEK_JOG_S,
@@ -272,7 +273,7 @@ def make_main_set(code: str, ctx: PlanContext, spec: WeekSpec, budget_km: float,
         return ms("T reps", "Z4", p.z4, "s", cfg.LT_PEAK_REP_S, cfg.LT_PEAK_JOG_S, ("A-14",))
     if code == "LT_RACE_PACE":
         return ms("Race-pace run", "Z3", p.z3_race, "cont", 0.0, 0.0, ("A-12", "A-25"))
-    if code == "LT_RACE_WEEK":
+    if code == "LT_RACE_WEEK":  # OWN DESIGN (A-21): 4 x 5 min is the target; the S4 cap wins
         return ms("Race-week T reps", "Z4", p.z4, "s", cfg.LT_RACE_WEEK_REP_S, cfg.LT_RACE_WEEK_JOG_S, ("A-21",),
                   target=cfg.LT_RACE_WEEK_REPS * cfg.LT_RACE_WEEK_REP_S / p.z4)
     raise ValueError(f"Unknown workout code {code!r}")
@@ -291,7 +292,10 @@ def new_easy(d: date, ctx: PlanContext) -> Session:
 
 
 def new_long(d: date, spec: WeekSpec, ctx: PlanContext) -> Session:
-    """L1-L3: the long run at Z2, as long as L1 and L2 allow (A-15, A-10)."""
+    """L1-L3: the long run at Z2, as long as L1 and L2 allow (A-15).
+
+    OWN DESIGN (A-10): one steady Z2 segment, no marathon-pace segments in v1.
+    """
     km, rule = long_run_km(spec.level_km, ctx.distance, ctx.paces.easy, ctx.cfg)
     s = Session(date=d, slot=LONG, main_zone=ctx.cfg.LONG_RUN_ZONE,
                 segments=[Segment("steady", km, ctx.cfg.LONG_RUN_ZONE, ctx.paces.easy)])
@@ -432,6 +436,7 @@ def refresh_week(week: Week, cfg: Any) -> None:
                            f"Easy run is {s.minutes:.0f} min; aim for at least {cfg.EASY_RUN_MIN_MIN:.0f} min (S3). "
                            f"Volume is not changed.")
     refresh_totals(week, cfg)
+    # OWN DESIGN (A-32): flag weeks where an easy run is longer than the long run
     week.notes = [n for n in week.notes if n.code != "LONG_RUN_NOT_LONGEST"]
     longs = [s for s in week.sessions if s.slot == LONG]
     if longs and any(s.km > longs[0].km + cfg.FLOAT_EPS for s in week.sessions if s.slot == EASY):
@@ -507,7 +512,7 @@ def build_week(spec: WeekSpec, ctx: PlanContext, history: Sequence[Week], all_sp
             for d in days:
                 if layout[d] == LONG:
                     layout[d] = EASY  # A-7: no long run when its weekday != race weekday
-        layout[race_day] = RACE  # A-7 / A-29: the race replaces whatever slot falls on race day
+        layout[race_day] = RACE  # OWN DESIGN (A-7, A-29): the race replaces whatever slot is on race day
 
     hard_days = sorted((d for d in days if layout[d] == HARD), key=lambda d: offset_of(d, spec.long_run_weekday))
     n_hard = hard_needed(spec, ctx)
@@ -562,7 +567,7 @@ def build_week(spec: WeekSpec, ctx: PlanContext, history: Sequence[Week], all_sp
     codes = select_workouts(spec, ctx, len(hards), history, all_specs)
     if hards:
         target = easy_share_target(spec.daniels_phase, cfg)
-        budget = (1.0 - target) * spec.level_km / len(hards)  # P5, A-19
+        budget = (1.0 - target) * spec.level_km / len(hards)  # P5; OWN DESIGN (A-19): split evenly
         wu = warmup_minutes(spec.level_km, cfg)
         for i, (s, code) in enumerate(zip(hards, codes), start=1):
             ms = make_main_set(code, ctx, spec, budget, history)

@@ -12,7 +12,7 @@ def session_load(session: Session, cfg: Any) -> Optional[float]:
     "session" (default): session duration x RPE of the session's main zone
     (Foster et al., 2001). "segment" (A-17): sum of segment minutes x segment-zone RPE.
     """
-    if session.slot == RACE:
+    if session.slot == RACE:  # OWN DESIGN (A-4): the race carries no planned load
         return None
     if cfg.LOAD_METHOD == "session":
         return session.minutes * cfg.ZONE_LOAD_RPE[session.main_zone]
@@ -26,7 +26,7 @@ def refresh_totals(week: Week, cfg: Any) -> None:
     for s in week.sessions:
         s.load = session_load(s, cfg)
         s.target_rpe = None if s.slot == RACE else cfg.ZONE_LOAD_RPE[s.main_zone]
-    runs = week.runs
+    runs = week.runs  # OWN DESIGN (A-4): the race is excluded from every week total
     week.km = sum(s.km for s in runs)
     week.easy_km = sum(seg.km for s in runs for seg in s.segments if seg.zone in cfg.EASY_ZONES)
     week.easy_share = week.easy_km / week.km if week.km > 0 else 1.0

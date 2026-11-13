@@ -79,9 +79,9 @@ def generate_plan(inputs: PlanInputs, cfg: Any = default_config) -> PlanResult:
     plan = PlanResult(status="OK", inputs=inputs, recovery_score=score, capacity=capacity, c_rule=c_rule,
                       track=cfg.TRACK_OF[distance], warnings=warnings)
     if inputs.injury_flag:
-        plan.advisories.append(Message("INJURY_FLAG", INJURY_ADVISORY))  # A-9
+        plan.advisories.append(Message("INJURY_FLAG", INJURY_ADVISORY))  # OWN DESIGN (A-9)
 
-    # V4 entry check (A-11)
+    # V4 entry check. OWN DESIGN (A-11): no plan below the minimum unless overridden
     if below_entry_minimum(distance, inputs.current_weekly_km, cfg):
         if inputs.override_entry_minimum and inputs.current_weekly_km > 0:
             plan.warnings.append(Message(
@@ -108,7 +108,8 @@ def generate_plan(inputs: PlanInputs, cfg: Any = default_config) -> PlanResult:
     plan.notes += vnotes
     levels = taper_levels(levels, phases, cfg)
 
-    lrw = inputs.long_run_weekday if inputs.long_run_weekday is not None else inputs.race_date.weekday()  # A-43
+    # OWN DESIGN (A-43): default long-run day = race weekday
+    lrw = inputs.long_run_weekday if inputs.long_run_weekday is not None else inputs.race_date.weekday()
     specs = [
         WeekSpec(label=f"H{j}", plan_index=None, start_date=s, end_date=e, daniels_phase=None, pacu_phase="hold",
                  week_type=HOLD, level_km=float(inputs.current_weekly_km), long_run_weekday=lrw,

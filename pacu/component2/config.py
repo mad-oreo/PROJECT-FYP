@@ -54,7 +54,9 @@ ZONE_LOAD_RPE = {"Z1": 1.5, "Z2": 3.5, "Z3": 5.5, "Z4": 7.5, "Z5": 9.5}
 Z1_PACE_OFFSET_S_PER_KM = 30.0
 Z4_PACE_DISTANCE = "10K"
 Z5_PACE_DISTANCE = "5K"
-EASY_ZONES = ("Z1", "Z2")  # "easy" in every share calculation (Z rules)
+# "Easy" in every share calculation = Z1 + Z2 (RPE 1-4). SOURCE: Campos et al. (2022),
+# p. 306 (low intensity = RPE 1-4) [log 15].
+EASY_ZONES = ("Z1", "Z2")
 
 # ---------------------------------------------------------------------------
 # C rules: recovery score and capacity
@@ -184,7 +186,8 @@ RACE_WEEK_HARD_SESSIONS = 1
 # ---------------------------------------------------------------------------
 # S1 weekly layout by offset from the long-run weekday (0 = long-run day).
 # User-chosen long-run day: SOURCE: Daniels (2022), Ch. 8, Ch. 13, Ch. 16 (Table 16.2), page TBC [log 38].
-# Slot pattern per capacity and the race-weekday default: OWN DESIGN (A-43).
+# Default long-run day = race weekday: OWN DESIGN (A-43), see engine.generate_plan.
+# Slot pattern per capacity (which offsets are LONG/HARD/EASY): SOURCE: TBC (not in the source map).
 LAYOUT = {
     "Conservative": {0: "LONG", 3: "HARD", 5: "EASY"},
     "Standard": {0: "LONG", 2: "HARD", 4: "EASY", 5: "HARD"},
