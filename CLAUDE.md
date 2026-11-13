@@ -25,9 +25,11 @@ runners who miss sessions get an easier next week.
 
 1. **Component 1 — Race time prediction.** Supervised ML regression trained on
    `train.csv`, then converted across distances from a marathon baseline.
-2. **Component 2 — Training plan generation.** Rule-based engine with a fuzzy
-   logic layer that sets training load, plus a session-synthesis stage that turns
-   load into named workouts.
+2. **Component 2 — Training plan generation.** A **staged crisp rule-based
+   engine**: crisp IF-THEN capacity rules (C1–C4), Daniels periodisation, a
+   session-synthesis stage that turns volume into named workouts, and an ACWR
+   governor. Built in `pacu/component2/`. The fuzzy layer was dropped in Nov 2026
+   (decision D9); fuzzy logic is future work only.
 3. **Component 3 — Closed-loop plan adjustment.** A feedback controller that reads
    the runner's logged load each week and eases or progresses the next week, under
    a safety cap on load ramp.
@@ -56,10 +58,12 @@ Full detail: `docs/02-components-design.md`.
    ("Romaniszyn et al.") once slipped into a Chapter 2 draft and was caught — this
    is the **"Romaniszyn rule."** If a source can't be located in the corpus or a
    real database, it does not get cited. See `docs/04-citations-and-sources.md`.
-2. **Separate sourced material from Naji's own design.** The membership functions,
-   rule base, conflict-resolution ordering, rep structures, the **easing**
-   adjustment polarity, and the **K** gain value are Naji's contributions — never
-   present them as literature-derived.
+2. **Separate sourced material from Naji's own design.** The capacity bands, the
+   C1–C4 rule base and its priority ordering, rep structures, every A-n item in
+   `ASSUMPTIONS.md`, the **easing** adjustment polarity, and the **K** gain value
+   are Naji's contributions — never present them as literature-derived. In
+   `pacu/component2/config.py` every number is tagged `SOURCE:`, `OWN DESIGN (A-n)`
+   or `SOURCE: TBC`.
 3. **Flag secondary citations.** If a claim is only reachable through another
    paper, cite it as secondary (APA 7) and say so.
 4. **Name scope cuts out loud.** Cuts already made (DDPG-LSTM RL, VDOT,
@@ -83,15 +87,19 @@ fyp-repo/
     └── 06-data-dictionary.md     <- train.csv columns, label, leakage flags
 ```
 
-Suggested layout to add as the build starts (not yet created):
+Code and outputs (as built):
 ```
-data/            raw + processed datasets (train.csv goes here)
-src/             component_1_prediction/, component_2_plan/, component_3_control/
-notebooks/       exploration + model training
-figures/         PNG exports for the thesis
-thesis/          chapter .docx files
-references/       the ~26 source papers (.md / .pdf)
+dataset/         train.csv etc. (git-ignored; Naji keeps the name dataset/, not data/)
+notebooks/       Component 1: 01 cleaning, 02 training, 03 extended models
+src/pipeline.py  Component 1 shared preprocessing
+src/component_*  old June prototypes (incl. the fuzzy Component 2): superseded, untouched
+pacu/component2/ Component 2 engine (README.md, ASSUMPTIONS.md describe it)
+personas/        P01-P14 persona fixtures for Component 2
+tests/           pytest suite (python -m pytest -q)
+scripts/         persona_report.py -> reports/ (Component 2 evaluation evidence)
+figures/, results/, models/   Component 1 outputs
 ```
+Thesis drafts (.docx) live one folder up, in the OneDrive root, not in this repo.
 
 ## Current status (start here)
 
@@ -102,6 +110,10 @@ references/       the ~26 source papers (.md / .pdf)
   — Domain (2.2), Technique (2.3), Related Works (2.4), 7–10 papers each.
 - **Chapter 4 (results/evaluation):** planned, not started. Will carry the K-gain
   justification and the ACWR ceiling framing.
+- **Component 2:** built (Nov 2026) in `pacu/component2/` from the PACU build brief.
+  The persona report (`reports/persona_report.md`) is its structural-conformance
+  evaluation. Open: confirm A-48/A-49 (governor implementation decisions) and pick
+  the `LOAD_METHOD` default from the report.
 
 ### Immediate next actions
 1. **Lock the cross-distance conversion method** for Component 1 (Dash generalised
@@ -120,3 +132,7 @@ Full task list and open questions: `docs/05-thesis-progress.md`.
   grep/awk to locate specific reference entries inside large compiled files.
 - **Output:** thesis in `.docx`; figures as named PNGs (e.g. *Figure 3.2 —
   Component 2 pipeline flowchart*).
+- **Python:** Anaconda (`C:\Users\Ahmad Naji\anaconda3\python.exe`, 3.12, has
+  pytest). The `python` on PATH outside Anaconda is a Windows Store 3.13 without
+  pytest. Component 2 is standard library only.
+- **Git:** the repo is under git since Nov 2026 (one commit per Component 2 module).

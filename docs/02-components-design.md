@@ -46,38 +46,68 @@ This gap should be named in the thesis, not hidden.
 
 ## Component 2 — Training Plan Generation
 
-A **rule-based engine** with a **fuzzy logic layer** on top, feeding a
-**session-synthesis** stage.
+A **staged crisp rule-based engine**: IF-THEN rules only, with no fuzzy logic, no ML and
+no randomness, so it is deterministic. It is implemented in `pacu/component2/` (see
+`README.md`). Every week and every session lists the IDs of the rules that produced it
+(`rule_trace`). Rule families: Z (zones), C (capacity), P (plan length and phases),
+V (volume), L (long run), T (taper), S (sessions), G (ACWR governor). Every number is
+in `pacu/component2/config.py` with its source tag. Every own-design choice is in
+`ASSUMPTIONS.md` (A-1 to A-49).
 
-### Fuzzy logic layer (Mamdani-style) **[Naji's own design for the MFs/rules]**
-- **Inputs:** weekly mileage, and recovery score (0–100 scale).
-- **Output:** a *capacity* value that drives **peak weekly volume** and the
-  **weekly volume increase rate**.
-- The membership functions, the rule base, and the conflict-resolution ordering
-  are Naji's own design — cite the *use of fuzzy logic in training* (the
-  `Running_Pace_Adjustment_..._Fuzzy_Logic...md` paper; and Huang & Wang, 2026,
-  verified) as precedent for the technique, **not** for these specific rules.
+**Changed Nov 2026 (D9):** the capacity layer was a Mamdani fuzzy layer; it is now
+crisp rules C1–C4. Fuzzy smoothing of the band edges is future work only.
+
+### Capacity layer (crisp rules C1–C4) **[Naji's own design: bands, rules, priority]**
+- **Inputs:** current weekly mileage (bands < 20 / 20–40 / > 40 km) and a recovery
+  score from three self-report questions (sleep, muscle recovery, freshness; each 1–5;
+  sum 3–15; bands 3–7 / 8–11 / 12–15).
+- **Rules, lowest priority number wins:** C1 recovery Low → Conservative;
+  C2 mileage Low → Conservative; C3 mileage High AND recovery High → Progressive;
+  C4 otherwise → Standard. Capacity is fixed for the whole plan.
+- **Capacity sets:** runs per week (3/4/5), hard sessions per week (1/2/2), the weekly
+  volume step (1.6 km × runs) and the peak target.
+- **Sourced parts:** the question set and 1–5 scale (Daniels, 2022, Table 2.1;
+  Goldberg et al., 2025; Smyth et al., 2022), runs per week and hard sessions per week
+  (Daniels, 2022, Ch. 16; Knopp et al., 2024). The bands, cut-offs, rules and priority
+  order are own design. Full source map: `docs/04-citations-and-sources.md`.
 
 ### Intensity model
-- **Five-zone HR/RPE intensity model**, anchored on **Knopp et al. (2024)** — the
+- **Five-zone HR/RPE intensity model**, anchored on **Knopp et al. (2024)**, the
   quantitative analysis of 92 sub-elite 12-week marathon plans, which provides
   evidence-based volume and intensity benchmarks for recreational runners.
 - **Citation accuracy:** Knopp et al. **adapted** the five-zone model from
-  **Jamnick et al.** and **Seiler** — do **not** credit Knopp as the originator of
-  the zone framework. (Confirmed in the paper's Table 2 and methods.)
+  **Jamnick et al.** and **Seiler**. Do **not** credit Knopp as the originator of the
+  zone framework (confirmed in the paper's Table 2 and methods).
+- Zone paces come from the runner's easy pace and Component 1's predicted paces (no
+  VDOT, D2). The pace targets and load RPE values are own design (A-12, A-33).
+
+### Periodisation, volume, taper
+- Phase allocation from Daniels (2022), Fig. 10.2, mapped to base / build / peak /
+  taper (A-1). Volume is held for 3 weeks, then a recovery week, then stepped up, and
+  never exceeds the peak target. Long-run caps (L1, L2). Taper of 1/1/2/3 weeks
+  (5K/10K/HM/M).
 
 ### Session synthesis
-- Maps (weekly volume + training phase) → **named workouts** (e.g. long run, tempo,
-  intervals, easy/recovery), each tagged to a target zone. The rep structures are
-  **[Naji's own design]**.
+- Maps week volume + phase → named workouts on a fixed weekly layout around the
+  long-run day: long run, easy runs, and hard sessions (threshold reps, tempo, race
+  pace, intervals). Main-set caps follow Daniels (2022) Ch. 4. Long-track content
+  follows Daniels (2022) Table 16.2. Short-track content and the rep sizing rules are
+  **[Naji's own design]** (A-45, A-46).
+
+### Safety governor
+- Weekly **ACWR ≤ 1.5** (Zhou & Zhou, 2025), applied last to every week. A week above
+  the cap is scaled down; the cut trims only that week. The way the cut factor is
+  computed (A-49, bisection) is an implementation decision awaiting Naji's confirmation.
 
 ### Recovery score source
-- **Primary:** self-report wellness check.
+- **Primary (built):** the three-question self-report above.
 - **Alternative:** a computed composite from objective markers (e.g. sleep, RHR,
-  recovery_score field).
+  recovery_score field), D8.
 
 ### Calendar placement — [scope decision]
-- **FYP-scoped implementation:** **fixed** placement with a fallback rule.
+- **FYP-scoped implementation:** **fixed** weekly layout relative to a user-chosen
+  long-run day (default: the race weekday). Component 3 can move the long-run day
+  mid-plan with `change_long_run_day`.
 - **Target / future work:** adaptive placement. Defended with a prepared viva
   script (see `docs/03-decisions-and-scope.md`).
 
@@ -86,7 +116,7 @@ A **rule-based engine** with a **fuzzy logic layer** on top, feeding a
 ## Component 3 — Closed-Loop Plan Adjustment
 
 **Core deliverable:** a **Proportional Controller (PC)**.
-**Time-permitting enhancement:** a **Fuzzy Feedback Controller**.
+**Fuzzy Feedback Controller:** future work only (Nov 2026; fuzzy logic is not used anywhere in the build, D9).
 **Stretch / future work:** a **Differential Evolution** controller (demoted).
 
 ### Load currency
@@ -114,6 +144,11 @@ A **rule-based engine** with a **fuzzy logic layer** on top, feeding a
 - **Critique to acknowledge:** Bornn, Ward & Norman (2019) argue training schedule
   confounds the ACWR–injury relationship. Chapter 4 should frame the 1.5 ceiling
   as a **heuristic**, citing this critique honestly.
+
+### Hooks provided by Component 2
+- `govern_week` (every Component 3 target passes the ACWR governor), `make_recovery_week`
+  (when the weekly recovery score is Low, 3–7), `change_long_run_day`,
+  `clear_injury_flag`. See `README.md`.
 
 ### Deferred justification
 - The specific **K gain value** and the **ACWR ceiling rationale** are justified in

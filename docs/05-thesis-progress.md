@@ -35,8 +35,8 @@
       "demo uses full features" caveat? *(see C1)*
 - [ ] Recovery score: confirm self-report primary vs. computed composite for the
       final implementation. *(D8)*
-- [ ] Fuzzy Feedback Controller — attempt it (time-permitting enhancement) or hold
-      as future work? *(D4)*
+- [x] Fuzzy Feedback Controller: held as future work (Nov 2026; fuzzy logic is
+      future work only, see D4 and D9).
 
 ## Working reminders
 

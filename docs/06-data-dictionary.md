@@ -47,7 +47,9 @@ not a claim about real runners.
 - `weather_condition_training_pct` (int)
 
 ### Recovery / lifestyle
-- `recovery_score` (float) — **also a Component 2 fuzzy input** (0–100 scale)
+- `recovery_score` (float), 0–100 scale. *Not* a Component 2 input: since Nov 2026
+  Component 2 uses its own 3-question self-report score (sleep, muscle recovery,
+  freshness; each 1–5, sum 3–15). See D9.
 - `sleep_hours_avg` (float)
 - `nutrition_score` (float)
 - `hydration_consistency` (float)
