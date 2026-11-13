@@ -31,3 +31,23 @@ def make_inputs(**kw) -> PlanInputs:
     )
     base.update(kw)
     return PlanInputs(**base)
+
+
+def make_ctx(inputs: PlanInputs, capacity: str | None = None, cfg=config):
+    """A PlanContext built straight from the rule modules (no engine)."""
+    from pacu.component2.capacity import decide_capacity
+    from pacu.component2.models import PlanContext
+    from pacu.component2.phases import phase_lengths, taper_length
+    from pacu.component2.plan_calendar import plan_calendar
+    from pacu.component2.volume import peak_target_km
+    from pacu.component2.zones import build_paces
+
+    cap = capacity or decide_capacity(inputs.current_weekly_km, inputs.recovery_answers, cfg)[0]
+    cal = plan_calendar(inputs.start_date, inputs.race_date, cfg)
+    d = inputs.target_distance
+    return PlanContext(
+        inputs=inputs, cfg=cfg, distance=d, track=cfg.TRACK_OF[d], capacity=cap,
+        paces=build_paces(inputs, cfg), n_weeks=cal.n_weeks,
+        taper_len=taper_length(d, cal.n_weeks, cfg), phase_lengths=phase_lengths(cal.n_weeks, cfg),
+        peak_target_km=peak_target_km(d, cap, cfg),
+    )

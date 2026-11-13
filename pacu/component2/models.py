@@ -147,10 +147,6 @@ class Session:
         return sum(s.minutes for s in self.segments)
 
     @property
-    def easy_km(self) -> float:
-        return sum(s.km for s in self.segments if s.zone in ("Z1", "Z2"))
-
-    @property
     def reps(self) -> Optional[int]:
         if self.main_set is None or self.main_set.unit == "cont":
             return None
@@ -162,7 +158,7 @@ class Session:
             return None
         if self.main_set.unit == "m":
             return f"{self.main_set.rep_len:.0f} m"
-        return _fmt_seconds(self.main_set.rep_len)
+        return fmt_seconds(self.main_set.rep_len)
 
     def add_trace(self, *rule_ids: str) -> None:
         for rid in rule_ids:
@@ -313,7 +309,7 @@ class PlanResult:
         raise KeyError(f"No week labelled {label!r}")
 
 
-def _fmt_seconds(seconds: float) -> str:
+def fmt_seconds(seconds: float) -> str:
     """Format a rep duration: 90 -> '90 s', 180 -> '3 min', 150 -> '2:30 min'."""
     s = int(round(seconds))
     if s < 120 and s % 60:

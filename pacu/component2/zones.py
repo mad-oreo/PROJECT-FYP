@@ -31,6 +31,20 @@ def build_paces(inputs: PlanInputs, cfg: Any) -> Paces:
     )
 
 
+def fmt_pace(s_per_km: float) -> str:
+    """Format a pace as 'm:ss/km' (output only)."""
+    total = int(round(s_per_km))
+    return f"{total // 60}:{total % 60:02d}/km"
+
+
+def fmt_time(seconds: float) -> str:
+    """Format a duration as 'h:mm:ss' or 'm:ss' (output only)."""
+    total = int(round(seconds))
+    h, rem = divmod(total, 3600)
+    m, s = divmod(rem, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
 def load_rpe(zone: str, cfg: Any) -> float:
     """RPE used for load (S6): CR10 range midpoint (A-33)."""
     return cfg.ZONE_LOAD_RPE[zone]
