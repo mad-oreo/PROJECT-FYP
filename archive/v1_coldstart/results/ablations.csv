@@ -1,0 +1,4 @@
+Ablation,MAE,RMSE,MAPE (%),R2
+"Reference: Gradient boosting, 9 features",17.3,21.7,6.1,0.585
+A: Gradient boosting + personal_best_minutes,12.3,15.7,4.3,0.783
+B: Gradient boosting - running_experience_months,24.4,30.5,8.7,0.181

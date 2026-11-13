@@ -1,0 +1,11 @@
+Group,n,Model,MAE,RMSE,MAPE (%),R2
+Has PB,16809,Linear regression,11.1,14.0,3.9,0.828
+Has PB,16809,Random forest,10.5,13.2,3.7,0.846
+Has PB,16809,Gradient boosting,10.3,13.0,3.6,0.851
+Has PB,16809,Neural network,10.6,13.3,3.7,0.844
+Has PB,16809,Riegel baseline,29.6,33.9,10.2,-0.019
+First-timer,2571,Linear regression,21.1,26.4,7.6,0.403
+First-timer,2571,Random forest,16.7,20.9,5.9,0.627
+First-timer,2571,Gradient boosting,16.3,20.5,5.8,0.64
+First-timer,2571,Neural network,17.2,21.6,6.1,0.6
+First-timer,2571,Riegel baseline,N/A (no prior race),N/A,N/A,N/A

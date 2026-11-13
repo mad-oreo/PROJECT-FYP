@@ -1,0 +1,12 @@
+Feature,MAE increase (min),Std
+personal_best_minutes,13.5,0.09
+running_experience_months,7.01,0.03
+injury_severity,2.33,0.05
+resting_heart_rate_bpm,0.78,0.02
+course_difficulty,0.69,0.03
+weekly_km,0.21,0.01
+age,0.08,0.01
+bmi,0.01,0.0
+runs_per_week,0.0,0.0
+long_run_distance_km,-0.0,0.0
+gender,0.0,0.0

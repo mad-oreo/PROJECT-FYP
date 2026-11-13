@@ -1,0 +1,5 @@
+Ablation,Model,Inputs,MAE,RMSE,MAPE (%),R2
+Reference: all 11 inputs,Gradient boosting,11,11.1,14.2,3.9,0.822
+A: without PB (pure cold-start),Gradient boosting,10,16.4,20.6,5.8,0.625
+B: without injury_severity,Gradient boosting,10,12.3,15.7,4.4,0.782
+C: without running_experience_months,Gradient boosting,10,13.2,17.4,4.7,0.734

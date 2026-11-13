@@ -1,0 +1,6 @@
+Model,MAE,RMSE,MAPE (%),R2
+Linear regression,19.5,24.6,7.0,0.465
+Random forest,17.3,21.7,6.1,0.583
+Gradient boosting,17.3,21.7,6.1,0.585
+Neural network,18.2,22.8,6.4,0.541
+Mean predictor,27.4,33.7,9.9,-0.0

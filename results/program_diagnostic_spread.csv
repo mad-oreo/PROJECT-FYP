@@ -1,0 +1,7 @@
+Group,training_program,Runners,Mean_predicted_min,Std_predicted_min
+First-timer,Beginner,1269,309.7,9.0
+First-timer,Intermediate,803,278.3,9.7
+First-timer,Advanced,499,246.7,8.9
+Has PB,Beginner,8381,310.9,18.2
+Has PB,Intermediate,5310,278.0,17.8
+Has PB,Advanced,3118,244.5,17.9

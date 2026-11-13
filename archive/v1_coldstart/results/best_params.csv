@@ -1,0 +1,5 @@
+Model,Best params,CV MAE
+Linear regression,no tuning,19.57
+Random forest,"{'n_estimators': 100, 'min_samples_leaf': 5, 'max_features': 1.0, 'max_depth': 10}",17.31
+Gradient boosting,"{'min_samples_leaf': 20, 'max_iter': 800, 'max_depth': 4, 'learning_rate': 0.03, 'l2_regularization': 0}",17.27
+Neural network,"{'learning_rate_init': 0.001, 'hidden_layer_sizes': (128, 64), 'alpha': 0.0001}",18.05

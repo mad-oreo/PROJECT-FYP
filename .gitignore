@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data: Kaggle synthetic dataset (23 MB), re-downloadable
+dataset/
+
+# Personal files unrelated to the project
+Claude outputs/
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# OS / editor
+desktop.ini
+Thumbs.db
+.vscode/
