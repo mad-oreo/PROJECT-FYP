@@ -70,6 +70,28 @@ def test_last_resort_converts_hard_sessions():
     assert any(s.has_note("G2_HARD_TO_EASY") or s.has_note("HARD_SESSION_TOO_SMALL") for s in week.sessions)
 
 
+def test_literal_method_matches_worked_check_too():
+    cfg = config.with_overrides(G2_FACTOR_METHOD="literal")
+    ctx = make_ctx(make_inputs(easy_pace_s_per_km=EASY, current_weekly_km=10), capacity="Conservative", cfg=cfg)
+    spec = _spec(14.8)
+    week = govern_week(build_week(spec, ctx, [], [spec]), [21 * km for km in (10, 10, 10, 8)], cfg)
+    assert week.km == pytest.approx(14.25) and week.governor["iterations"] == 1
+
+
+def test_bisect_factor_is_the_smallest_cut():
+    # A-49: scaling by a slightly larger factor than the one chosen would break the cap.
+    from pacu.component2.governor import _scaled_copy, g2_factor
+    ctx = make_ctx(make_inputs())
+    spec = _spec(36.4, "II", "build", idx=5)
+    week = build_week(spec, ctx, [], [spec])
+    base = 30 * (400 / 60) * 3.5
+    chronic = chronic_load([base, base, base, 0.8 * base], config)
+    f = g2_factor(week, chronic, config)
+    assert 0 < f < 1
+    assert _scaled_copy(week, f, config).load / chronic <= 1.5 + 1e-9
+    assert _scaled_copy(week, f + 1e-6, config).load / chronic > 1.5
+
+
 def test_chronic_load_errors():
     with pytest.raises(ValueError):
         chronic_load([0, 0, 0, 0], config)

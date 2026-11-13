@@ -276,8 +276,28 @@ CHRONIC_WINDOW_WEEKS = 4
 BASELINE_WEEKS = 4
 BASELINE_ZONE = "Z2"
 G2_MAX_ITERATIONS = 10
+# G2 factor. OWN DESIGN (A-49)
+# "bisect" (default): one factor f per week, the largest f <= 1 for which the scaled
+#   week (reps recomputed with S7) has ACWR <= 1.5, found by bisection. For a week with
+#   no hard sessions this is exactly the brief's f = 1.5 x chronic / load.
+# "literal": the brief's f = 1.5 x chronic / load, repeated up to G2_MAX_ITERATIONS.
+#   Warm-up/cool-down are not scaled, so this only approaches 1.5 from above and often
+#   ends in the A-27 last resort (kept for comparison).
+G2_FACTOR_METHOD = "bisect"
+G2_FACTOR_METHODS = ("bisect", "literal")
+G2_BISECT_STEPS = 40
+G2_MIN_FACTOR = 1e-3  # below this, scaling cannot reach the target: go to A-27
 # G4 (governor runs last, trims only the actual week) and G5 (Component 3 targets
 # pass through govern_week): SOURCE: Proposal s. 3.7.2, s. 3.7.3.
+
+# ---------------------------------------------------------------------------
+# Reporting (summary and persona report). OWN DESIGN (A-31)
+# ---------------------------------------------------------------------------
+# "Reached peak target" allows for output rounding (km are shown to 0.1).
+REPORT_KM_TOLERANCE = 0.05
+# Weekly-increase benchmark of 5-9%, report only. The brief attributes it to Knopp et al.
+# (2024) but the source map has no verification-log row for it. SOURCE: TBC
+KNOPP_WEEKLY_INCREASE_PCT = (5.0, 9.0)
 
 # ---------------------------------------------------------------------------
 # Numerical tolerances (implementation detail, not training rules)
@@ -299,4 +319,6 @@ def with_overrides(**overrides: Any) -> SimpleNamespace:
         values[key] = value
     if values["LOAD_METHOD"] not in values["LOAD_METHODS"]:
         raise ValueError(f"LOAD_METHOD must be one of {values['LOAD_METHODS']}")
+    if values["G2_FACTOR_METHOD"] not in values["G2_FACTOR_METHODS"]:
+        raise ValueError(f"G2_FACTOR_METHOD must be one of {values['G2_FACTOR_METHODS']}")
     return SimpleNamespace(**values)

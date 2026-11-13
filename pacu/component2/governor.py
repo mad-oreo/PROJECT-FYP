@@ -1,8 +1,11 @@
 """G1-G6: the ACWR safety governor.
 
 G1: ACWR = week load / mean of the previous 4 weeks' actual loads.
-G2: if ACWR > 1.5, scale the week by f = 1.5 x chronic / load, repeat up to
-    10 times, then convert hard sessions to easy as a last resort (A-27).
+G2: if ACWR > 1.5, scale the week by a factor f (easy and long-run km, hard main
+    sets; warm-up/cool-down unchanged), recompute reps, repeat up to 10 times, then
+    convert hard sessions to easy as a last resort (A-27). The brief's
+    f = 1.5 x chronic / load is G2_FACTOR_METHOD "literal"; the default "bisect"
+    (A-49) uses the largest single f that brings ACWR to <= 1.5.
 G3: after any cut, re-check P6 and L2. OWN DESIGN (A-48): also re-check L1 and
     S4 against the actual (cut) week km, so every cap holds on what is run.
 G4: runs last for each week; trims only that week (future V2 levels unchanged).
@@ -10,6 +13,7 @@ G6: cold start baseline weeks are supplied by the caller (engine).
 """
 from __future__ import annotations
 
+import copy
 from typing import Any, Sequence
 
 from .load import refresh_totals
@@ -56,6 +60,42 @@ def _scale_week(week: Week, f: float, cfg: Any) -> None:
                             message="After the G2 cut the main set no longer fits; easy run with strides instead.",
                             rules=("G2", "A-25") if unit == "cont" else ("G2", "S7", "A-5"))
         split_easy(week, target, ctx)
+
+
+def _over(load: float, chronic: float, cfg: Any) -> bool:
+    return load / chronic > cfg.ACWR_CAP + cfg.ACWR_TOLERANCE
+
+
+def _scaled_copy(week: Week, f: float, cfg: Any) -> Week:
+    """A trial copy of the week scaled by f (the plan context is shared, not copied)."""
+    trial = copy.deepcopy(week, memo={id(week.ctx): week.ctx})
+    _scale_week(trial, f, cfg)
+    refresh_week(trial, cfg)
+    return trial
+
+
+def g2_factor(week: Week, chronic: float, cfg: Any) -> float:
+    """G2 factor f. Returns 0 when no factor >= G2_MIN_FACTOR reaches the target.
+
+    "literal": the brief's f = 1.5 x chronic / load.
+    "bisect" (OWN DESIGN, A-49): the largest single f <= 1 for which the week, scaled
+    by f with reps recomputed (S7), has ACWR <= 1.5. With no hard sessions the load is
+    proportional to f, so this equals the brief's formula.
+    """
+    if cfg.G2_FACTOR_METHOD == "literal":
+        return cfg.ACWR_CAP * chronic / week.load
+    if cfg.G2_FACTOR_METHOD != "bisect":
+        raise ValueError(f"Unknown G2_FACTOR_METHOD {cfg.G2_FACTOR_METHOD!r}")
+    lo, hi = cfg.G2_MIN_FACTOR, 1.0
+    if _over(_scaled_copy(week, lo, cfg).load, chronic, cfg):
+        return 0.0
+    for _ in range(cfg.G2_BISECT_STEPS):
+        mid = (lo + hi) / 2.0
+        if _over(_scaled_copy(week, mid, cfg).load, chronic, cfg):
+            hi = mid
+        else:
+            lo = mid
+    return lo
 
 
 def _convert_latest_hard(week: Week, cfg: Any) -> None:
@@ -141,7 +181,9 @@ def govern_week(week: Week, previous_loads: Sequence[float], config: Any) -> Wee
         nonlocal factor, iterations
         n = 0
         while over() and n < cfg.G2_MAX_ITERATIONS:
-            f = cap * chronic / week.load
+            f = g2_factor(week, chronic, cfg)
+            if f <= 0.0:
+                return  # scaling cannot reach the target: go to the A-27 last resort
             _scale_week(week, f, cfg)
             refresh_week(week, cfg)
             factor *= f
