@@ -1,0 +1,31 @@
+{
+  "id": "P06",
+  "name": "Progressive HM",
+  "inputs": {
+    "target_distance": "HM",
+    "predicted_5k": "23:00",
+    "easy_pace_s_per_km": "5:50",
+    "current_weekly_km": 45,
+    "recovery_answers": [
+      5,
+      4,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-03-14",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Progressive",
+    "c_rule": "C3",
+    "N": 14,
+    "hold_weeks": 0,
+    "warnings": [],
+    "notes": [],
+    "advisories": []
+  }
+}

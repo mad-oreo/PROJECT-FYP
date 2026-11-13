@@ -1,0 +1,33 @@
+{
+  "id": "P14",
+  "name": "Above peak target",
+  "inputs": {
+    "target_distance": "5K",
+    "predicted_5k": "20:30",
+    "easy_pace_s_per_km": "5:20",
+    "current_weekly_km": 50,
+    "recovery_answers": [
+      5,
+      4,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-02-28",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Progressive",
+    "c_rule": "C3",
+    "N": 12,
+    "hold_weeks": 0,
+    "warnings": [],
+    "notes": [
+      "ABOVE_PEAK_TARGET"
+    ],
+    "advisories": []
+  }
+}

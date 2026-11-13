@@ -1,0 +1,31 @@
+{
+  "id": "P08",
+  "name": "Standard marathon",
+  "inputs": {
+    "target_distance": "M",
+    "predicted_5k": "26:00",
+    "easy_pace_s_per_km": "6:20",
+    "current_weekly_km": 35,
+    "recovery_answers": [
+      4,
+      4,
+      3
+    ],
+    "injury_flag": false,
+    "race_date": "2027-04-11",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Standard",
+    "c_rule": "C4",
+    "N": 18,
+    "hold_weeks": 0,
+    "warnings": [],
+    "notes": [],
+    "advisories": []
+  }
+}

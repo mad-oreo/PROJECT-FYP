@@ -1,0 +1,35 @@
+{
+  "id": "P11",
+  "name": "Below entry",
+  "inputs": {
+    "target_distance": "M",
+    "predicted_5k": "29:00",
+    "easy_pace_s_per_km": "7:00",
+    "current_weekly_km": 15,
+    "recovery_answers": [
+      4,
+      4,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-04-25",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "BELOW_ENTRY_MINIMUM",
+    "capacity": "Conservative",
+    "c_rule": "C2",
+    "warnings": [],
+    "notes": [],
+    "advisories": [],
+    "suggestions": [
+      "TRY_5K",
+      "TRY_10K",
+      "TRY_HM",
+      "CHOOSE_LATER_RACE"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "P10",
+  "name": "Too little time",
+  "inputs": {
+    "target_distance": "M",
+    "predicted_5k": "27:00",
+    "easy_pace_s_per_km": "6:30",
+    "current_weekly_km": 30,
+    "recovery_answers": [
+      4,
+      3,
+      3
+    ],
+    "injury_flag": false,
+    "race_date": "2027-01-31",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Standard",
+    "c_rule": "C4",
+    "N": 8,
+    "hold_weeks": 0,
+    "warnings": [
+      "PLAN_SHORTER_THAN_MINIMUM"
+    ],
+    "notes": [],
+    "advisories": []
+  }
+}

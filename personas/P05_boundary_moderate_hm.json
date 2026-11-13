@@ -1,0 +1,31 @@
+{
+  "id": "P05",
+  "name": "Boundary moderate HM",
+  "inputs": {
+    "target_distance": "HM",
+    "predicted_5k": "29:00",
+    "easy_pace_s_per_km": "7:00",
+    "current_weekly_km": 21,
+    "recovery_answers": [
+      4,
+      4,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-03-14",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Standard",
+    "c_rule": "C4",
+    "N": 14,
+    "hold_weeks": 0,
+    "warnings": [],
+    "notes": [],
+    "advisories": []
+  }
+}

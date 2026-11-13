@@ -1,0 +1,31 @@
+{
+  "id": "P09",
+  "name": "Far-away marathon",
+  "inputs": {
+    "target_distance": "M",
+    "predicted_5k": "21:30",
+    "easy_pace_s_per_km": "5:30",
+    "current_weekly_km": 50,
+    "recovery_answers": [
+      5,
+      5,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-07-04",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "expect": {
+    "status": "OK",
+    "capacity": "Progressive",
+    "c_rule": "C3",
+    "N": 24,
+    "hold_weeks": 6,
+    "warnings": [],
+    "notes": [],
+    "advisories": []
+  }
+}
