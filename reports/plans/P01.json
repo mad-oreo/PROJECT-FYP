@@ -1,0 +1,1679 @@
+{
+  "status": "OK",
+  "warnings": [],
+  "notes": [],
+  "advisories": [],
+  "suggestions": [],
+  "inputs": {
+    "target_distance": "5K",
+    "predicted_times_s": {
+      "5K": 2160.0,
+      "10K": 4503.5,
+      "HM": 9936.4,
+      "M": 20716.8
+    },
+    "easy_pace_s_per_km": 510.0,
+    "easy_pace": "8:30/km",
+    "current_weekly_km": 8.0,
+    "recovery_answers": [
+      3,
+      3,
+      3
+    ],
+    "injury_flag": false,
+    "race_date": "2027-02-07",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "recovery_score": 9,
+  "capacity": "Conservative",
+  "c_rule": "C2",
+  "track": "short",
+  "N": 9,
+  "hold_weeks": 0,
+  "phase_lengths": {
+    "I": 3,
+    "II": 3,
+    "III": 0,
+    "IV": 3
+  },
+  "config": {
+    "LOAD_METHOD": "session",
+    "G2_FACTOR_METHOD": "bisect"
+  },
+  "race": {
+    "date": "2027-02-07",
+    "distance": "5K",
+    "km": 5.0,
+    "predicted_time_s": 2160,
+    "predicted_time": "36:00",
+    "rule_trace": [
+      "A-7",
+      "A-4"
+    ],
+    "pace": "7:12/km"
+  },
+  "summary": {
+    "weeks_total": 9,
+    "plan_km": 73.4,
+    "start_km": 8.0,
+    "peak_target_km": 25.0,
+    "peak_level_km": 12.8,
+    "peak_km_reached": 10.2,
+    "reached_peak_target": false,
+    "g2_fire_count": 3,
+    "g2_weeks": [
+      "5",
+      "6",
+      "7"
+    ],
+    "max_acwr": 1.5,
+    "min_easy_share": 0.812,
+    "plan_easy_share": 0.955,
+    "max_long_run_km": 3.1,
+    "hard_sessions": 4,
+    "easy_run_under_30_min": 11,
+    "hard_session_too_small": 0,
+    "volume_too_low_for_hard": 0,
+    "long_run_not_longest_weeks": 8,
+    "avg_build_increase_pct": 14.5,
+    "build_increase_weeks": 2
+  },
+  "weeks": [
+    {
+      "label": "1",
+      "start_date": "2026-12-07",
+      "end_date": "2026-12-13",
+      "daniels_phase": "I",
+      "pacu_phase": "base",
+      "week_type": "normal",
+      "level_km": 8.0,
+      "km": 8.0,
+      "easy_km": 8.0,
+      "easy_share": 1.0,
+      "load": 238.0,
+      "chronic_load": 238.0,
+      "acwr": 1.0,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V1",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2026-12-09",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km + 6 strides",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 6,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6",
+            "A-2",
+            "A-14"
+          ],
+          "notes": [
+            {
+              "code": "STRIDES",
+              "message": "6 strides of 15-20 s after the run; their distance is not counted."
+            },
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-11",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-13",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 2.4 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.4,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 20
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.4,
+          "minutes": 20,
+          "target_rpe": 3.5,
+          "load": 71.4,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "2",
+      "start_date": "2026-12-14",
+      "end_date": "2026-12-20",
+      "daniels_phase": "I",
+      "pacu_phase": "base",
+      "week_type": "normal",
+      "level_km": 8.0,
+      "km": 8.0,
+      "easy_km": 8.0,
+      "easy_share": 1.0,
+      "load": 238.0,
+      "chronic_load": 238.0,
+      "acwr": 1.0,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V2",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2026-12-16",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km + 6 strides",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 6,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6",
+            "A-2",
+            "A-14"
+          ],
+          "notes": [
+            {
+              "code": "STRIDES",
+              "message": "6 strides of 15-20 s after the run; their distance is not counted."
+            },
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-18",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-20",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 2.4 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.4,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 20
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.4,
+          "minutes": 20,
+          "target_rpe": 3.5,
+          "load": 71.4,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "3",
+      "start_date": "2026-12-21",
+      "end_date": "2026-12-27",
+      "daniels_phase": "I",
+      "pacu_phase": "base",
+      "week_type": "normal",
+      "level_km": 8.0,
+      "km": 8.0,
+      "easy_km": 8.0,
+      "easy_share": 1.0,
+      "load": 238.0,
+      "chronic_load": 238.0,
+      "acwr": 1.0,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V2",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2026-12-23",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km + 6 strides",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 6,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6",
+            "A-2",
+            "A-14"
+          ],
+          "notes": [
+            {
+              "code": "STRIDES",
+              "message": "6 strides of 15-20 s after the run; their distance is not counted."
+            },
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 2.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 83.3,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 24 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2026-12-27",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 2.4 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.4,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 20
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.4,
+          "minutes": 20,
+          "target_rpe": 3.5,
+          "load": 71.4,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "4",
+      "start_date": "2026-12-28",
+      "end_date": "2027-01-03",
+      "daniels_phase": "II",
+      "pacu_phase": "build",
+      "week_type": "recovery",
+      "level_km": 6.4,
+      "km": 6.4,
+      "easy_km": 6.4,
+      "easy_share": 1.0,
+      "load": 190.4,
+      "chronic_load": 238.0,
+      "acwr": 0.8,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "P4",
+        "A-40",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2026-12-30",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "EASY",
+          "title": "Easy 2.2 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.2,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 19
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.2,
+          "minutes": 19,
+          "target_rpe": 3.5,
+          "load": 66.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6",
+            "P4"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 19 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-01",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 2.2 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.2,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 19
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.2,
+          "minutes": 19,
+          "target_rpe": 3.5,
+          "load": 66.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 19 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-03",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 1.9 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 1.9,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 16
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 1.9,
+          "minutes": 16,
+          "target_rpe": 3.5,
+          "load": 57.1,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "5",
+      "start_date": "2027-01-04",
+      "end_date": "2027-01-10",
+      "daniels_phase": "II",
+      "pacu_phase": "build",
+      "week_type": "normal",
+      "level_km": 12.8,
+      "km": 7.2,
+      "easy_km": 6.8,
+      "easy_share": 0.945,
+      "load": 318.0,
+      "chronic_load": 226.1,
+      "acwr": 1.406,
+      "governor": {
+        "fired": true,
+        "factor": 0.4687,
+        "iterations": 1
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V2",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "P5",
+        "S4",
+        "S5",
+        "S7",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4",
+        "G2",
+        "G3",
+        "A-42",
+        "A-48"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        },
+        {
+          "code": "G2",
+          "message": "ACWR was 2.210 (> 1.5); the week was cut by factor 0.469 to ACWR 1.406 (G2)."
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2027-01-06",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "HARD",
+          "title": "2 × 200 m @ 7:30/km, 2 min jog",
+          "main_zone": "Z4",
+          "segments": [
+            {
+              "kind": "warmup",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z4",
+              "pace_s_per_km": 450,
+              "pace": "7:30/km",
+              "minutes": 2
+            },
+            {
+              "kind": "jog",
+              "km": 0.2,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 2
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z4",
+              "pace_s_per_km": 450,
+              "pace": "7:30/km",
+              "minutes": 2
+            },
+            {
+              "kind": "cooldown",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            }
+          ],
+          "reps": 2,
+          "rep_length": "200 m",
+          "km": 2.8,
+          "minutes": 25,
+          "target_rpe": 7.5,
+          "load": 187.5,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S2",
+            "S-CT(short,build,#1)",
+            "P5",
+            "A-19",
+            "S4",
+            "S5",
+            "A-13",
+            "S7",
+            "S6",
+            "A-46"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-08",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 2.6 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.6,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 22
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.6,
+          "minutes": 22,
+          "target_rpe": 3.5,
+          "load": 76.9,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 22 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-10",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 1.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 1.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 15
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 1.8,
+          "minutes": 15,
+          "target_rpe": 3.5,
+          "load": 53.5,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "6",
+      "start_date": "2027-01-11",
+      "end_date": "2027-01-17",
+      "daniels_phase": "II",
+      "pacu_phase": "build",
+      "week_type": "normal",
+      "level_km": 12.8,
+      "km": 10.0,
+      "easy_km": 8.1,
+      "easy_share": 0.812,
+      "load": 369.1,
+      "chronic_load": 246.1,
+      "acwr": 1.5,
+      "governor": {
+        "fired": true,
+        "factor": 0.7375,
+        "iterations": 1
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V2",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "P5",
+        "S4",
+        "S5",
+        "S7",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4",
+        "G2",
+        "G3",
+        "A-42",
+        "A-48"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        },
+        {
+          "code": "G2",
+          "message": "ACWR was 1.875 (> 1.5); the week was cut by factor 0.737 to ACWR 1.500 (G2)."
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2027-01-13",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "HARD",
+          "title": "Tempo run 15 min (1.9 km) @ 8:01/km",
+          "main_zone": "Z3",
+          "segments": [
+            {
+              "kind": "warmup",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            },
+            {
+              "kind": "steady",
+              "km": 1.9,
+              "zone": "Z3",
+              "pace_s_per_km": 481,
+              "pace": "8:01/km",
+              "minutes": 15
+            },
+            {
+              "kind": "cooldown",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 4.1,
+          "minutes": 35,
+          "target_rpe": 5.5,
+          "load": 193.2,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S2",
+            "S-CT(short,build,#1)",
+            "P5",
+            "A-19",
+            "S4",
+            "S5",
+            "A-13",
+            "S7",
+            "S6",
+            "A-46",
+            "A-12",
+            "A-25"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-15",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 3.1 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.1,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 26
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.1,
+          "minutes": 26,
+          "target_rpe": 3.5,
+          "load": 91.7,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 26 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2027-01-17",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 2.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 24
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 3.5,
+          "load": 84.2,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "7",
+      "start_date": "2027-01-18",
+      "end_date": "2027-01-24",
+      "daniels_phase": "IV",
+      "pacu_phase": "peak",
+      "week_type": "normal",
+      "level_km": 12.8,
+      "km": 9.1,
+      "easy_km": 8.7,
+      "easy_share": 0.956,
+      "load": 418.3,
+      "chronic_load": 278.9,
+      "acwr": 1.5,
+      "governor": {
+        "fired": true,
+        "factor": 0.653,
+        "iterations": 1
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "V2",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "P5",
+        "S4",
+        "S5",
+        "S7",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4",
+        "G2",
+        "G3",
+        "A-42",
+        "A-48"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        },
+        {
+          "code": "G2",
+          "message": "ACWR was 1.954 (> 1.5); the week was cut by factor 0.653 to ACWR 1.500 (G2)."
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2027-01-20",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "HARD",
+          "title": "2 × 200 m @ 7:12/km, 90 s jog",
+          "main_zone": "Z5",
+          "segments": [
+            {
+              "kind": "warmup",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z5",
+              "pace_s_per_km": 432,
+              "pace": "7:12/km",
+              "minutes": 1
+            },
+            {
+              "kind": "jog",
+              "km": 0.2,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 2
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z5",
+              "pace_s_per_km": 432,
+              "pace": "7:12/km",
+              "minutes": 1
+            },
+            {
+              "kind": "cooldown",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            }
+          ],
+          "reps": 2,
+          "rep_length": "200 m",
+          "km": 2.8,
+          "minutes": 24,
+          "target_rpe": 9.5,
+          "load": 231.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S2",
+            "S-CT(short,peak,#1)",
+            "P5",
+            "A-19",
+            "S4",
+            "S5",
+            "A-13",
+            "S7",
+            "S6",
+            "A-46"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-22",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 3.8 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.8,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 32
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.8,
+          "minutes": 32,
+          "target_rpe": 3.5,
+          "load": 112.1,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-24",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 2.5 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 2.5,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 21
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 2.5,
+          "minutes": 21,
+          "target_rpe": 3.5,
+          "load": 74.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "8",
+      "start_date": "2027-01-25",
+      "end_date": "2027-01-31",
+      "daniels_phase": "IV",
+      "pacu_phase": "peak",
+      "week_type": "recovery",
+      "level_km": 10.2,
+      "km": 10.2,
+      "easy_km": 10.2,
+      "easy_share": 1.0,
+      "load": 304.6,
+      "chronic_load": 324.0,
+      "acwr": 0.94,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "P4",
+        "A-40",
+        "S1",
+        "S2",
+        "L1",
+        "L3",
+        "S3",
+        "P6",
+        "A-32",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [
+        {
+          "code": "LONG_RUN_NOT_LONGEST",
+          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+        }
+      ],
+      "sessions": [
+        {
+          "date": "2027-01-27",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "EASY",
+          "title": "Easy 3.6 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.6,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 30
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.6,
+          "minutes": 30,
+          "target_rpe": 3.5,
+          "load": 106.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6",
+            "P4"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-29",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 3.6 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.6,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 30
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.6,
+          "minutes": 30,
+          "target_rpe": 3.5,
+          "load": 106.6,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-01-31",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "LONG",
+          "title": "Long run 3.1 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.1,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 26
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.1,
+          "minutes": 26,
+          "target_rpe": 3.5,
+          "load": 91.4,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "L1",
+            "L3",
+            "A-15",
+            "A-10",
+            "S6"
+          ],
+          "notes": []
+        }
+      ]
+    },
+    {
+      "label": "9",
+      "start_date": "2027-02-01",
+      "end_date": "2027-02-07",
+      "daniels_phase": "IV",
+      "pacu_phase": "taper",
+      "week_type": "race",
+      "level_km": 6.4,
+      "km": 6.4,
+      "easy_km": 5.8,
+      "easy_share": 0.906,
+      "load": 307.0,
+      "chronic_load": 352.5,
+      "acwr": 0.871,
+      "governor": {
+        "fired": false,
+        "factor": 1.0,
+        "iterations": 0
+      },
+      "rule_trace": [
+        "P1",
+        "P3",
+        "A-1",
+        "T1",
+        "T2",
+        "T3",
+        "A-3",
+        "A-7",
+        "A-4",
+        "S1",
+        "S2",
+        "P5",
+        "S4",
+        "S5",
+        "S7",
+        "S3",
+        "P6",
+        "S6",
+        "G1",
+        "G4"
+      ],
+      "notes": [],
+      "sessions": [
+        {
+          "date": "2027-02-03",
+          "weekday": 2,
+          "day": "Wed",
+          "slot": "HARD",
+          "title": "3 × 200 m @ 7:30/km, 2 min jog",
+          "main_zone": "Z4",
+          "segments": [
+            {
+              "kind": "warmup",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z4",
+              "pace_s_per_km": 450,
+              "pace": "7:30/km",
+              "minutes": 2
+            },
+            {
+              "kind": "jog",
+              "km": 0.2,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 2
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z4",
+              "pace_s_per_km": 450,
+              "pace": "7:30/km",
+              "minutes": 2
+            },
+            {
+              "kind": "jog",
+              "km": 0.2,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 2
+            },
+            {
+              "kind": "rep",
+              "km": 0.2,
+              "zone": "Z4",
+              "pace_s_per_km": 450,
+              "pace": "7:30/km",
+              "minutes": 2
+            },
+            {
+              "kind": "cooldown",
+              "km": 1.1,
+              "zone": "Z1",
+              "pace_s_per_km": 540,
+              "pace": "9:00/km",
+              "minutes": 10
+            }
+          ],
+          "reps": 3,
+          "rep_length": "200 m",
+          "km": 3.3,
+          "minutes": 29,
+          "target_rpe": 7.5,
+          "load": 213.8,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S2",
+            "S-CT(short,taper,#1)",
+            "P5",
+            "A-19",
+            "S4",
+            "S5",
+            "A-13",
+            "S7",
+            "S6",
+            "A-46",
+            "A-21",
+            "A-22"
+          ],
+          "notes": []
+        },
+        {
+          "date": "2027-02-05",
+          "weekday": 4,
+          "day": "Fri",
+          "slot": "EASY",
+          "title": "Easy 3.1 km @ 8:30/km",
+          "main_zone": "Z2",
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 3.1,
+              "zone": "Z2",
+              "pace_s_per_km": 510,
+              "pace": "8:30/km",
+              "minutes": 27
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 3.1,
+          "minutes": 27,
+          "target_rpe": 3.5,
+          "load": 93.2,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "S1",
+            "S3",
+            "S6"
+          ],
+          "notes": [
+            {
+              "code": "EASY_RUN_UNDER_30_MIN",
+              "message": "Easy run is 27 min; aim for at least 30 min (S3). Volume is not changed."
+            }
+          ]
+        },
+        {
+          "date": "2027-02-07",
+          "weekday": 6,
+          "day": "Sun",
+          "slot": "RACE",
+          "title": "RACE 5K: 5.0 km @ 7:12/km (predicted 36:00)",
+          "main_zone": null,
+          "segments": [
+            {
+              "kind": "steady",
+              "km": 5.0,
+              "zone": null,
+              "pace_s_per_km": 432,
+              "pace": "7:12/km",
+              "minutes": 36
+            }
+          ],
+          "reps": null,
+          "rep_length": null,
+          "km": 5.0,
+          "minutes": 36,
+          "target_rpe": null,
+          "load": null,
+          "hr_range": null,
+          "strides": 0,
+          "run_walk_ok": false,
+          "rule_trace": [
+            "A-7",
+            "A-4"
+          ],
+          "notes": [
+            {
+              "code": "RACE_EXCLUDED",
+              "message": "The race is excluded from week km, easy share, load and ACWR (A-4)."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

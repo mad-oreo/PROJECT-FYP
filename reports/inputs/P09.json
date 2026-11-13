@@ -1,0 +1,23 @@
+{
+  "target_distance": "M",
+  "predicted_times_s": {
+    "5K": 1290.0,
+    "10K": 2689.6,
+    "HM": 5934.3,
+    "M": 12372.5
+  },
+  "easy_pace_s_per_km": 330.0,
+  "easy_pace": "5:30/km",
+  "current_weekly_km": 50.0,
+  "recovery_answers": [
+    5,
+    5,
+    4
+  ],
+  "injury_flag": false,
+  "race_date": "2027-07-04",
+  "start_date": "2026-12-07",
+  "long_run_weekday": null,
+  "max_hr": null,
+  "override_entry_minimum": false
+}

@@ -1,0 +1,58 @@
+{
+  "status": "BELOW_ENTRY_MINIMUM",
+  "warnings": [],
+  "notes": [],
+  "advisories": [],
+  "suggestions": [
+    {
+      "code": "TRY_5K",
+      "message": "5K: your 15 km/week meets its entry minimum of 5 km/week."
+    },
+    {
+      "code": "TRY_10K",
+      "message": "10K: your 15 km/week meets its entry minimum of 10 km/week."
+    },
+    {
+      "code": "TRY_HM",
+      "message": "HM: your 15 km/week meets its entry minimum of 15 km/week."
+    },
+    {
+      "code": "CHOOSE_LATER_RACE",
+      "message": "Build up to at least 25 km/week first, then choose a later M race."
+    }
+  ],
+  "inputs": {
+    "target_distance": "M",
+    "predicted_times_s": {
+      "5K": 1740.0,
+      "10K": 3627.8,
+      "HM": 8004.3,
+      "M": 16688.5
+    },
+    "easy_pace_s_per_km": 420.0,
+    "easy_pace": "7:00/km",
+    "current_weekly_km": 15.0,
+    "recovery_answers": [
+      4,
+      4,
+      4
+    ],
+    "injury_flag": false,
+    "race_date": "2027-04-25",
+    "start_date": "2026-12-07",
+    "long_run_weekday": null,
+    "max_hr": null,
+    "override_entry_minimum": false
+  },
+  "recovery_score": 12,
+  "capacity": "Conservative",
+  "c_rule": "C2",
+  "track": "long",
+  "N": 0,
+  "hold_weeks": 0,
+  "phase_lengths": {},
+  "config": null,
+  "race": null,
+  "summary": {},
+  "weeks": []
+}
