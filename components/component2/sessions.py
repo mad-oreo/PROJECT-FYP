@@ -254,7 +254,7 @@ def make_main_set(code: str, ctx: PlanContext, spec: WeekSpec, budget_km: float,
         return ms("Threshold reps", "Z4", p.z4, "m", cfg.ST_PEAK_10K_REP_M, cfg.ST_PEAK_10K_JOG_S, ("A-46", "A-14"))
     if code == "ST_RACE_WEEK":  # OWN DESIGN (A-21, A-22): target reps, then the S4 cap wins
         last = last_build_z4_reps(history)
-        reps = cfg.ST_RACE_WEEK_MIN_REPS if last is None else max(cfg.ST_RACE_WEEK_MIN_REPS, _round_half_up(last / 2))
+        reps = cfg.ST_RACE_WEEK_MIN_REPS if last is None else max(cfg.ST_RACE_WEEK_MIN_REPS, _round_half_up(last * cfg.ST_RACE_WEEK_REP_FRACTION))
         return ms("Race-week threshold reps", "Z4", p.z4, "m", cfg.ST_RACE_WEEK_REP_M, cfg.ST_RACE_WEEK_JOG_S,
                   ("A-46", "A-21", "A-22"), target=reps * cfg.ST_RACE_WEEK_REP_M / 1000.0)
     if code == "LT_T_REPS_3MIN":
@@ -441,7 +441,7 @@ def refresh_week(week: Week, cfg: Any) -> None:
     longs = [s for s in week.sessions if s.slot == LONG]
     if longs and any(s.km > longs[0].km + cfg.FLOAT_EPS for s in week.sessions if s.slot == EASY):
         week.add_note("LONG_RUN_NOT_LONGEST",
-                      "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)")
+                      "An easy run is longer than the long run this week (only easy runs are compared). (A-32)")
         week.add_trace("A-32")
 
 

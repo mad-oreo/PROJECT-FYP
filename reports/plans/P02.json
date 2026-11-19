@@ -118,7 +118,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -271,7 +271,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -424,7 +424,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -578,7 +578,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -733,7 +733,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         },
         {
           "code": "G2",
@@ -927,7 +927,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -1103,7 +1103,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -1291,7 +1291,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -1443,7 +1443,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -1651,7 +1651,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [
@@ -1859,7 +1859,7 @@
       "notes": [
         {
           "code": "LONG_RUN_NOT_LONGEST",
-          "message": "An easy run is longer than the long run this week (L1 30% cap with few runs). (A-32)"
+          "message": "An easy run is longer than the long run this week (only easy runs are compared). (A-32)"
         }
       ],
       "sessions": [

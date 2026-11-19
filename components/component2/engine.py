@@ -45,7 +45,7 @@ def validate(inputs: PlanInputs, cfg: Any) -> list[Message]:
         raise ValueError("easy_pace_s_per_km must be positive")
     if inputs.current_weekly_km < 0:
         raise ValueError("current_weekly_km must be >= 0")
-    if len(inputs.recovery_answers) != 3 or any(
+    if len(inputs.recovery_answers) != cfg.RECOVERY_Q_COUNT or any(
         not isinstance(q, int) or not cfg.RECOVERY_Q_MIN <= q <= cfg.RECOVERY_Q_MAX for q in inputs.recovery_answers
     ):
         raise ValueError(f"recovery_answers must be three integers {cfg.RECOVERY_Q_MIN}-{cfg.RECOVERY_Q_MAX}")

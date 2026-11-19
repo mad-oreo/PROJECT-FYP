@@ -5,7 +5,11 @@ Each constant names its rule ID and its source:
   rule-specification verification log (checked 11-13 Nov 2026). Daniels page
   numbers are not verified yet, so Daniels tags say "page TBC".
 - ``OWN DESIGN (A-n)``: Naji's own design; see ASSUMPTIONS.md for A-n.
-- ``SOURCE: TBC``: not covered by the source map (none at present).
+- ``SOURCE: TBC``: not covered by the source map (``LAYOUT`` and
+  ``KNOPP_WEEKLY_INCREASE_PCT``).
+- ``DEFINITION``: a unit, a standard definition or a numerical tolerance, not a
+  training rule, so it needs no source (``DISTANCE_KM``, ``DAYS_PER_WEEK``,
+  ``ACWR_TOLERANCE``, ``FLOAT_EPS``).
 
 No other module may hard-code a threshold. To run with different values (for
 persona testing) use :func:`with_overrides`, e.g. ``with_overrides(LOAD_METHOD="segment")``.
@@ -20,6 +24,7 @@ from typing import Any
 # Distances and tracks
 # ---------------------------------------------------------------------------
 DISTANCES = ("5K", "10K", "HM", "M")
+# Standard race distances in km. DEFINITION
 DISTANCE_KM = {"5K": 5.0, "10K": 10.0, "HM": 21.0975, "M": 42.195}
 TRACK_OF = {"5K": "short", "10K": "short", "HM": "long", "M": "long"}
 CAPACITIES = ("Conservative", "Standard", "Progressive")
@@ -64,6 +69,7 @@ EASY_ZONES = ("Z1", "Z2")
 # Three recovery questions (sleep, muscle recovery, freshness), each 1-5, summed.
 # SOURCE: Daniels (2022), Ch. 2, Table 2.1 "Stress Table", page TBC [log 35];
 # Goldberg et al. (2025), Abstract [log 37]; Smyth et al. (2022), s. 2.1.3, p. 793 [log 36].
+RECOVERY_Q_COUNT = 3
 RECOVERY_Q_MIN = 1
 RECOVERY_Q_MAX = 5
 # Recovery bands (sum 3-15): Low 3-7, Moderate 8-11, High 12-15. OWN DESIGN (A-34)
@@ -88,7 +94,7 @@ V2_KM_PER_RUN = 1.6
 # ---------------------------------------------------------------------------
 # P rules: plan length and phases
 # ---------------------------------------------------------------------------
-DAYS_PER_WEEK = 7
+DAYS_PER_WEEK = 7  # DEFINITION
 # P1: 24-week cap. SOURCE: Daniels (2022), Ch. 10 "Adapt the Phase Lengths as Necessary", page TBC [log 17].
 MAX_PLAN_WEEKS = 24
 # A-28: a plan needs at least 2 whole weeks (1 non-taper week + race week). OWN DESIGN (A-28)
@@ -261,6 +267,9 @@ ST_PEAK_10K_JOG_S = 120.0
 ST_RACE_WEEK_REP_M = 1000.0
 ST_RACE_WEEK_JOG_S = 120.0
 ST_RACE_WEEK_MIN_REPS = 2
+# Race-week reps = this fraction of the last build-week Z4 reps (rounded half up),
+# at least ST_RACE_WEEK_MIN_REPS. OWN DESIGN (A-21, A-22)
+ST_RACE_WEEK_REP_FRACTION = 0.5
 
 # Race week placement (A-7): hard session 4-6 days before the race, preferring 5;
 # none in the 3 days before. OWN DESIGN (A-7)
@@ -303,7 +312,7 @@ REPORT_KM_TOLERANCE = 0.05
 KNOPP_WEEKLY_INCREASE_PCT = (5.0, 9.0)
 
 # ---------------------------------------------------------------------------
-# Numerical tolerances (implementation detail, not training rules)
+# Numerical tolerances (implementation detail, not training rules). DEFINITION
 # ---------------------------------------------------------------------------
 ACWR_TOLERANCE = 1e-9  # ACWR <= cap + tolerance counts as within the cap
 FLOAT_EPS = 1e-9  # guards floor() against 2.9999999 style float error
