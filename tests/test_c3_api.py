@@ -3,11 +3,11 @@ from datetime import date
 
 import pytest
 
-from pacu.component2 import (
+from components.component2 import (
     change_long_run_day, clear_injury_flag, generate_plan, govern_week, make_recovery_week,
 )
-from pacu.component2.engine import load_history
-from pacu.component2.sessions import s2_violations
+from components.component2.engine import load_history
+from components.component2.sessions import s2_violations
 
 from helpers import make_inputs, riegel_times
 

@@ -1,8 +1,8 @@
 """C rules: band boundaries and priority resolution."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.capacity import (
+from components.component2 import config
+from components.component2.capacity import (
     decide_capacity, fired_rules, mileage_band, recovery_band, v2_step_km,
 )
 

@@ -1,8 +1,8 @@
 """L1 and L2 at 20, 63, 64 and 80 km/week."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.long_run import l1_cap_km, l2_cap_km, long_run_km
+from components.component2 import config
+from components.component2.long_run import l1_cap_km, l2_cap_km, long_run_km
 
 EASY = 360.0  # 6:00/km -> 150 min = 25 km
 

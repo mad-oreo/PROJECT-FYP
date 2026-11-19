@@ -1,4 +1,4 @@
-"""CLI: python -m pacu.component2 --input path.json [--out plan.json] [--pretty]"""
+"""CLI: python -m components.component2 --input path.json [--out plan.json] [--pretty]"""
 from __future__ import annotations
 
 import argparse
@@ -12,7 +12,7 @@ from .serialize import inputs_from_dict, plan_to_json, pretty_table
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(prog="python -m pacu.component2",
+    ap = argparse.ArgumentParser(prog="python -m components.component2",
                                  description="PACU Component 2: rule-based training plan engine.")
     ap.add_argument("--input", required=True, help="PlanInputs JSON file")
     ap.add_argument("--out", help="write the plan JSON here")

@@ -3,10 +3,10 @@ from functools import lru_cache
 
 import pytest
 
-from pacu.component2 import config, generate_plan
-from pacu.component2.long_run import l1_cap_km, l2_cap_km
-from pacu.component2.serialize import plan_to_json
-from pacu.component2.sessions import s2_violations, s4_cap_km
+from components.component2 import config, generate_plan
+from components.component2.long_run import l1_cap_km, l2_cap_km
+from components.component2.serialize import plan_to_json
+from components.component2.sessions import s2_violations, s4_cap_km
 from personas.loader import all_personas
 
 PERSONAS = all_personas()

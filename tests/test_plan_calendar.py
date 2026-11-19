@@ -3,8 +3,8 @@ from datetime import date, timedelta
 
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.plan_calendar import length_messages, minimum_weeks, plan_calendar
+from components.component2 import config
+from components.component2.plan_calendar import length_messages, minimum_weeks, plan_calendar
 
 START = date(2026, 12, 7)  # Monday
 

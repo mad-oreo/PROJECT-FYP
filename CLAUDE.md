@@ -28,7 +28,7 @@ runners who miss sessions get an easier next week.
 2. **Component 2 — Training plan generation.** A **staged crisp rule-based
    engine**: crisp IF-THEN capacity rules (C1–C4), Daniels periodisation, a
    session-synthesis stage that turns volume into named workouts, and an ACWR
-   governor. Built in `pacu/component2/`. The fuzzy layer was dropped in Nov 2026
+   governor. Built in `components/component2/`. The fuzzy layer was dropped in Nov 2026
    (decision D9); fuzzy logic is future work only.
 3. **Component 3 — Closed-loop plan adjustment.** A feedback controller that reads
    the runner's logged load each week and eases or progresses the next week, under
@@ -62,7 +62,7 @@ Full detail: `docs/02-components-design.md`.
    C1–C4 rule base and its priority ordering, rep structures, every A-n item in
    `ASSUMPTIONS.md`, the **easing** adjustment polarity, and the **K** gain value
    are Naji's contributions — never present them as literature-derived. In
-   `pacu/component2/config.py` every number is tagged `SOURCE:`, `OWN DESIGN (A-n)`
+   `components/component2/config.py` every number is tagged `SOURCE:`, `OWN DESIGN (A-n)`
    or `SOURCE: TBC`.
 3. **Flag secondary citations.** If a claim is only reachable through another
    paper, cite it as secondary (APA 7) and say so.
@@ -93,7 +93,7 @@ dataset/         train.csv etc. (git-ignored; Naji keeps the name dataset/, not 
 notebooks/       Component 1: 01 cleaning, 02 training, 03 extended models
 src/pipeline.py  Component 1 shared preprocessing
 src/component_*  old June prototypes (incl. the fuzzy Component 2): superseded, untouched
-pacu/component2/ Component 2 engine (README.md, ASSUMPTIONS.md describe it)
+components/component2/ Component 2 engine (README.md, ASSUMPTIONS.md describe it)
 personas/        P01-P14 persona fixtures for Component 2
 tests/           pytest suite (python -m pytest -q)
 scripts/         persona_report.py -> reports/ (Component 2 evaluation evidence)
@@ -110,7 +110,7 @@ Thesis drafts (.docx) live one folder up, in the OneDrive root, not in this repo
   — Domain (2.2), Technique (2.3), Related Works (2.4), 7–10 papers each.
 - **Chapter 4 (results/evaluation):** planned, not started. Will carry the K-gain
   justification and the ACWR ceiling framing.
-- **Component 2:** built (Nov 2026) in `pacu/component2/` from the PACU build brief.
+- **Component 2:** built (Nov 2026) in `components/component2/` from the PACU build brief.
   The persona report (`reports/persona_report.md`) is its structural-conformance
   evaluation. Open: confirm A-48/A-49 (governor implementation decisions) and pick
   the `LOAD_METHOD` default from the report.

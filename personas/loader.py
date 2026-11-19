@@ -11,9 +11,9 @@ import json
 from pathlib import Path
 from typing import Any
 
-from pacu.component2 import config
-from pacu.component2.models import PlanInputs
-from pacu.component2.serialize import inputs_from_dict, parse_duration
+from components.component2 import config
+from components.component2.models import PlanInputs
+from components.component2.serialize import inputs_from_dict, parse_duration
 
 PERSONA_DIR = Path(__file__).resolve().parent
 RIEGEL_EXPONENT = 1.06

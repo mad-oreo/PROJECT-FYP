@@ -17,7 +17,7 @@ not a default.
 | D6 | **Adjustment polarity: easing (not make-up)** | Naji's own design choice, distinct from Connor et al. For beginner/recreational runners, easing after missed load is safer than piling missed load back on. |
 | D7 | **Cross-distance conversion — [OPEN]** | Dash generalised approach vs. power-law baseline. Not yet locked. |
 | D8 | **Recovery score: self-report primary, computed composite alternative** | Self-report is simplest for the user; composite is the fallback when objective markers are available. |
-| D9 | **Nov 2026: Component 2 capacity layer changed from Mamdani fuzzy to crisp rules C1–C4.** Component 2 is now a staged crisp rule-based engine (`pacu/component2/`). Fuzzy logic is not moved to Component 3; it stays only as future work in the thesis. | Examiner's suggestion at the viva; full traceability of every rule (each week and session lists the rule IDs that produced it). Fuzzy smoothing of band edges is future work. |
+| D9 | **Nov 2026: Component 2 capacity layer changed from Mamdani fuzzy to crisp rules C1–C4.** Component 2 is now a staged crisp rule-based engine (`components/component2/`). Fuzzy logic is not moved to Component 3; it stays only as future work in the thesis. | Examiner's suggestion at the viva; full traceability of every rule (each week and session lists the rule IDs that produced it). Fuzzy smoothing of band edges is future work. |
 
 ## Scope guardrails
 

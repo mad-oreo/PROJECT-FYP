@@ -6,7 +6,7 @@ Prediction for Distance Runners Using Machine Learning.*
 | Component | What it does | Where |
 |---|---|---|
 | 1. Race time prediction | ML regression on a synthetic marathon dataset, with Riegel conversion to 5K/10K/HM | `notebooks/`, `src/pipeline.py` |
-| 2. Training plan engine | Staged crisp IF-THEN rule engine: inputs to a dated, periodised plan | `pacu/component2/` |
+| 2. Training plan engine | Staged crisp IF-THEN rule engine: inputs to a dated, periodised plan | `components/component2/` |
 | 3. Closed-loop adjustment | Weekly feedback controller (not built yet) | n/a |
 
 Project notes for contributors are in `CLAUDE.md` and `docs/`.
@@ -16,7 +16,7 @@ Project notes for contributors are in `CLAUDE.md` and `docs/`.
 Component 2 turns a runner's inputs into a week-by-week plan. It uses no ML, no fuzzy
 logic and no randomness, so the same inputs always give the same plan. Every week and
 every session lists the rule IDs that produced it (`rule_trace`). Every number lives in
-`pacu/component2/config.py`, tagged with its rule ID and source. Own-design choices are
+`components/component2/config.py`, tagged with its rule ID and source. Own-design choices are
 listed in [ASSUMPTIONS.md](ASSUMPTIONS.md).
 
 ### How to run
@@ -27,9 +27,9 @@ only the standard library; the tests need `pytest`. Run from the project root:
 ```bash
 python -m pytest -q                                   # all tests
 python scripts/persona_report.py                      # persona report -> reports/
-python -m pacu.component2 --input reports/inputs/P03.json --pretty            # text table
-python -m pacu.component2 --input my_runner.json --out plan.json               # JSON plan
-python -m pacu.component2 --input my_runner.json --pretty --load-method segment
+python -m components.component2 --input reports/inputs/P03.json --pretty            # text table
+python -m components.component2 --input my_runner.json --out plan.json               # JSON plan
+python -m components.component2 --input my_runner.json --pretty --load-method segment
 ```
 
 ### Inputs (`PlanInputs`, JSON)
@@ -85,7 +85,7 @@ km to 0.1, minutes to whole numbers.
 ### Functions for Component 3
 
 ```python
-from pacu.component2 import govern_week, make_recovery_week, change_long_run_day, clear_injury_flag
+from components.component2 import govern_week, make_recovery_week, change_long_run_day, clear_injury_flag
 ```
 
 - `govern_week(week, previous_loads, config)`: G1-G3 on one week; Component 3's targets must pass through it.

@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from datetime import date
 
-from pacu.component2 import config
-from pacu.component2.models import PlanInputs
+from components.component2 import config
+from components.component2.models import PlanInputs
 
 RIEGEL_EXPONENT = 1.06
 
@@ -35,12 +35,12 @@ def make_inputs(**kw) -> PlanInputs:
 
 def make_ctx(inputs: PlanInputs, capacity: str | None = None, cfg=config):
     """A PlanContext built straight from the rule modules (no engine)."""
-    from pacu.component2.capacity import decide_capacity
-    from pacu.component2.models import PlanContext
-    from pacu.component2.phases import phase_lengths, taper_length
-    from pacu.component2.plan_calendar import plan_calendar
-    from pacu.component2.volume import peak_target_km
-    from pacu.component2.zones import build_paces
+    from components.component2.capacity import decide_capacity
+    from components.component2.models import PlanContext
+    from components.component2.phases import phase_lengths, taper_length
+    from components.component2.plan_calendar import plan_calendar
+    from components.component2.volume import peak_target_km
+    from components.component2.zones import build_paces
 
     cap = capacity or decide_capacity(inputs.current_weekly_km, inputs.recovery_answers, cfg)[0]
     cal = plan_calendar(inputs.start_date, inputs.race_date, cfg)

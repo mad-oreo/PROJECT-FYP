@@ -3,11 +3,11 @@ from datetime import date, timedelta
 
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.long_run import l1_cap_km, l2_cap_km
-from pacu.component2.governor import chronic_load, govern_week
-from pacu.component2.models import WeekSpec
-from pacu.component2.sessions import build_week, s4_cap_km
+from components.component2 import config
+from components.component2.long_run import l1_cap_km, l2_cap_km
+from components.component2.governor import chronic_load, govern_week
+from components.component2.models import WeekSpec
+from components.component2.sessions import build_week, s4_cap_km
 
 from helpers import make_ctx, make_inputs
 
@@ -80,7 +80,7 @@ def test_literal_method_matches_worked_check_too():
 
 def test_bisect_factor_is_the_smallest_cut():
     # A-49: scaling by a slightly larger factor than the one chosen would break the cap.
-    from pacu.component2.governor import _scaled_copy, g2_factor
+    from components.component2.governor import _scaled_copy, g2_factor
     ctx = make_ctx(make_inputs())
     spec = _spec(36.4, "II", "build", idx=5)
     week = build_week(spec, ctx, [], [spec])

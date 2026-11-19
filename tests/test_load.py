@@ -3,9 +3,9 @@ from datetime import date
 
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.load import baseline_load, session_load
-from pacu.component2.models import Segment, Session
+from components.component2 import config
+from components.component2.load import baseline_load, session_load
+from components.component2.models import Segment, Session
 
 
 def _hard():

@@ -1,9 +1,9 @@
 """V1-V4 and P4 levels."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.phases import plan_phases
-from pacu.component2.volume import below_entry_minimum, entry_suggestions, weekly_levels
+from components.component2 import config
+from components.component2.phases import plan_phases
+from components.component2.volume import below_entry_minimum, entry_suggestions, weekly_levels
 
 
 def test_v2_sequence_10km_conservative():

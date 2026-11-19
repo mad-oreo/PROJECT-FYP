@@ -3,7 +3,7 @@ from datetime import date, timedelta
 
 import pytest
 
-from pacu.component2 import generate_plan
+from components.component2 import generate_plan
 
 from helpers import make_inputs, riegel_times
 

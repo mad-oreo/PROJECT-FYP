@@ -1,8 +1,8 @@
 """P3 (Fig. 10.2), A-1, T1, P4."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.phases import phase_lengths, plan_phases, taper_length
+from components.component2 import config
+from components.component2.phases import phase_lengths, plan_phases, taper_length
 
 
 @pytest.mark.parametrize("n,lengths", [

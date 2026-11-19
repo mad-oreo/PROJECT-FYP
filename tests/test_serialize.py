@@ -4,8 +4,8 @@ import subprocess
 import sys
 from pathlib import Path
 
-from pacu.component2 import generate_plan
-from pacu.component2.serialize import inputs_from_dict, inputs_to_dict, plan_to_json, pretty_table
+from components.component2 import generate_plan
+from components.component2.serialize import inputs_from_dict, inputs_to_dict, plan_to_json, pretty_table
 
 from helpers import make_inputs
 
@@ -44,7 +44,7 @@ def test_cli(tmp_path):
     inp = tmp_path / "in.json"
     inp.write_text(json.dumps(inputs_to_dict(make_inputs())), encoding="utf-8")
     out = tmp_path / "plan.json"
-    r = subprocess.run([sys.executable, "-m", "pacu.component2", "--input", str(inp), "--out", str(out),
+    r = subprocess.run([sys.executable, "-m", "components.component2", "--input", str(inp), "--out", str(out),
                         "--pretty"], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
     assert r.returncode == 0, r.stderr
     assert json.loads(out.read_text(encoding="utf-8"))["status"] == "OK"

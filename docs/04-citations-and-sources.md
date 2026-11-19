@@ -96,7 +96,7 @@ Relevance · Limitation) — keep that consistent.
 ## Component 2 source map (verified 11–13 Nov 2026)
 
 The canonical map from Component 2 rules to sources, from Naji's verification log
-("Log #" = row in that log). `pacu/component2/config.py` is tagged from this table;
+("Log #" = row in that log). `components/component2/config.py` is tagged from this table;
 own-design rows are listed with code locations in `ASSUMPTIONS.md`. Daniels page
 numbers are not verified yet: cite chapter/section and mark **page TBC**.
 

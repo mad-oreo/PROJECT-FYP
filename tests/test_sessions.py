@@ -3,9 +3,9 @@ from datetime import date, timedelta
 
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.models import MainSet, Session, WeekSpec
-from pacu.component2.sessions import (
+from components.component2 import config
+from components.component2.models import MainSet, Session, WeekSpec
+from components.component2.sessions import (
     build_week, halve_rep, layout_for, s2_violations, s4_cap_km, size_main_set,
 )
 

@@ -1,8 +1,8 @@
 """Z rules."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.zones import build_paces, hr_range, is_easy, load_rpe
+from components.component2 import config
+from components.component2.zones import build_paces, hr_range, is_easy, load_rpe
 
 from helpers import make_inputs, riegel_times
 

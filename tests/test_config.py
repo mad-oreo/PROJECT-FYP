@@ -1,7 +1,7 @@
 """Sanity checks on config.py (every number lives there)."""
 import pytest
 
-from pacu.component2 import config
+from components.component2 import config
 
 
 def test_v2_step_is_1_6_km_per_run():

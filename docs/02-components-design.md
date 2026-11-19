@@ -47,11 +47,11 @@ This gap should be named in the thesis, not hidden.
 ## Component 2 — Training Plan Generation
 
 A **staged crisp rule-based engine**: IF-THEN rules only, with no fuzzy logic, no ML and
-no randomness, so it is deterministic. It is implemented in `pacu/component2/` (see
+no randomness, so it is deterministic. It is implemented in `components/component2/` (see
 `README.md`). Every week and every session lists the IDs of the rules that produced it
 (`rule_trace`). Rule families: Z (zones), C (capacity), P (plan length and phases),
 V (volume), L (long run), T (taper), S (sessions), G (ACWR governor). Every number is
-in `pacu/component2/config.py` with its source tag. Every own-design choice is in
+in `components/component2/config.py` with its source tag. Every own-design choice is in
 `ASSUMPTIONS.md` (A-1 to A-49).
 
 **Changed Nov 2026 (D9):** the capacity layer was a Mamdani fuzzy layer; it is now

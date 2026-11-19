@@ -1,8 +1,8 @@
 # Component 2: own-design assumptions (A-n)
 
-Every own-design choice in `pacu/component2/` is listed here with its code
+Every own-design choice in `components/component2/` is listed here with its code
 location. In code, each one carries a comment `# OWN DESIGN (A-n)`; search for
-that string to find it. Numbers live in `pacu/component2/config.py` under the named
+that string to find it. Numbers live in `components/component2/config.py` under the named
 constants.
 
 These are **Naji's own design** (or, for A-48 and A-49, implementation decisions

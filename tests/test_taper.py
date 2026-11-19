@@ -1,10 +1,10 @@
 """T2 taper levels."""
 import pytest
 
-from pacu.component2 import config
-from pacu.component2.phases import plan_phases
-from pacu.component2.taper import taper_levels
-from pacu.component2.volume import weekly_levels
+from components.component2 import config
+from components.component2.phases import plan_phases
+from components.component2.taper import taper_levels
+from components.component2.volume import weekly_levels
 
 
 def test_marathon_taper_sequence():
